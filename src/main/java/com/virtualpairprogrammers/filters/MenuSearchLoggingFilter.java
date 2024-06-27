@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
-@WebFilter("/searchResults.jsp")
+@WebFilter("/searchResults.html")
 public class MenuSearchLoggingFilter implements Filter {
 
     @Override

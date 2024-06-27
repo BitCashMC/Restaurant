@@ -8,16 +8,19 @@
     
         <jsp:include page="/header.jsp" />
         
-        <form action='orderReceived.html' method='POST'>
+        <form action='/orderReceived.html' method='POST'>
        		<%
        		List<MenuItem> menuItems = (List<MenuItem>)request.getAttribute("menuItems");
        		
        		for (MenuItem item : menuItems) {
        		%>
        		
-       		<li><%=item%></li><input type='text' name=<%="item_"+item.getId()%>/>
-       		
-       		<%
+       		<li><%=item%></li>
+			<label>
+				<input type='text' name=<%="item_"+item.getId()%> />
+			</label>
+
+			<%
        		}
        		%>
         	

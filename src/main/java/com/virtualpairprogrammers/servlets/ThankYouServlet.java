@@ -1,5 +1,8 @@
 package com.virtualpairprogrammers.servlets;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.HttpConstraint;
 import javax.servlet.annotation.ServletSecurity;
 import javax.servlet.annotation.WebServlet;
@@ -14,10 +17,7 @@ import java.io.PrintWriter;
 @ServletSecurity(@HttpConstraint(rolesAllowed = {"user"}))
 public class ThankYouServlet extends HttpServlet {
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         HttpSession session = request.getSession();
         Double total = (Double) session.getAttribute("total");
@@ -27,12 +27,11 @@ public class ThankYouServlet extends HttpServlet {
             return;
         }
 
-        out.println("<html><body>");
-        out.println("Order total: " + total);
-        out.println("</body></html>");
+        ServletContext context = request.getServletContext();
+        RequestDispatcher dispatch = context.getRequestDispatcher("/thankYou.jsp");
+        dispatch.forward(request,response);
 
-        out.close();
-
+        System.out.println(total);
 
     }
 }
