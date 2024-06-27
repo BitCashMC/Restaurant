@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 
 import com.virtualpairprogrammers.domain.MenuCategory;
 import com.virtualpairprogrammers.domain.MenuItem;
@@ -39,6 +40,16 @@ public class MenuDataService {
 			}
 		}
 		
+		return results;
+	}
+
+	public List<MenuItem> findBy(Predicate<MenuItem> predicate) {
+
+		List<MenuItem> results = new ArrayList<>();
+		for (MenuItem menuItem : menuItems) {
+			if (predicate.test(menuItem)) results.add(menuItem);
+		}
+
 		return results;
 	}
 	
