@@ -1,8 +1,12 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <%@ page import = "com.virtualpairprogrammers.domain.MenuItem" %>
 <%@ page import = "java.util.List" %>
 
 <html>
     <body>
+    <c:out value="hello world"/>
+
         <jsp:include page="/header.jsp" />
         <%
         List<MenuItem> menuItems = (List<MenuItem>) request.getAttribute("menuItems");
