@@ -1,8 +1,6 @@
 package com.virtualpairprogrammers.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,23 +8,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.virtualpairprogrammers.data.MenuDataService;
-import com.virtualpairprogrammers.domain.MenuItem;
+import com.virtualpairprogrammers.data.MenuDao;
 
 @WebServlet("/orderReceived.html")
 public class OrderReceivedServlet extends HttpServlet {
 
 
     public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException {
-        MenuDataService menuDataService = new MenuDataService();
+        MenuDao menuDao = new MenuDao();
 
-        int maxId = menuDataService.getFullMenu().size();
+        int maxId = menuDao.getFullMenu().size();
         for (int i = 0; i <maxId; i++) {
             String quantity = request.getParameter("item_" + i);
             try
             {
                 int q = Integer.parseInt(quantity);
-                if (q > 0) menuDataService.addToOrder(menuDataService.getItem(i), q);
+                if (q > 0) menuDao.addToOrder(menuDao.getItem(i), q);
             }
             catch(NumberFormatException nfe)
             {
@@ -37,7 +34,7 @@ public class OrderReceivedServlet extends HttpServlet {
 
         System.out.println("A new order has been received.");
 
-        Double total = menuDataService.getOrderTotal();
+        Double total = menuDao.getOrderTotal();
 
         HttpSession session = request.getSession();
         session.setAttribute("total",total);

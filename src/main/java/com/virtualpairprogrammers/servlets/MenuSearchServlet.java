@@ -1,6 +1,6 @@
 package com.virtualpairprogrammers.servlets;
 
-import com.virtualpairprogrammers.data.MenuDataService;
+import com.virtualpairprogrammers.data.MenuDao;
 import com.virtualpairprogrammers.domain.MenuItem;
 
 import javax.servlet.RequestDispatcher;
@@ -17,7 +17,7 @@ import java.util.List;
 public class MenuSearchServlet extends HttpServlet {
 
     public void service(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        MenuDataService dataService = new MenuDataService();
+        MenuDao dataService = new MenuDao();
         String searchTerm = request.getParameter("searchTerm");
         List<MenuItem> menuItems = dataService.find(searchTerm);
 

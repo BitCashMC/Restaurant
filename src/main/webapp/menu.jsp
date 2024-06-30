@@ -1,5 +1,3 @@
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <%@ page import = "com.virtualpairprogrammers.domain.MenuItem" %>
 <%@ page import = "java.util.List" %>
 

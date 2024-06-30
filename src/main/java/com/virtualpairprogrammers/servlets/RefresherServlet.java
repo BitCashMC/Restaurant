@@ -1,6 +1,6 @@
 package com.virtualpairprogrammers.servlets;
 
-import com.virtualpairprogrammers.data.MenuDataService;
+import com.virtualpairprogrammers.data.MenuDao;
 import com.virtualpairprogrammers.domain.MenuItem;
 
 import javax.servlet.RequestDispatcher;
@@ -18,7 +18,7 @@ public class RefresherServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        MenuDataService dataService = new MenuDataService();
+        MenuDao dataService = new MenuDao();
         Integer maxPrice = Integer.valueOf(req.getParameter("maxPrice"));
 
         List<MenuItem> items = dataService.findBy(p -> p.getPrice()<=maxPrice);

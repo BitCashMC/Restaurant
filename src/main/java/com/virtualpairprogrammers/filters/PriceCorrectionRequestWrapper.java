@@ -1,7 +1,5 @@
 package com.virtualpairprogrammers.filters;
 
-import com.virtualpairprogrammers.data.MenuDataService;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
